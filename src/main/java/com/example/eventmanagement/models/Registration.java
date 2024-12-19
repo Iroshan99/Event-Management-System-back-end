@@ -1,8 +1,10 @@
 package com.example.eventmanagement.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class Registration {
 
     @Id
