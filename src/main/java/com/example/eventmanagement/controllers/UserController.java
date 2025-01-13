@@ -1,12 +1,7 @@
 package com.example.eventmanagement.controllers;
 
-
-import com.example.eventmanagement.models.Event;
-import com.example.eventmanagement.models.Registration;
 import com.example.eventmanagement.models.User;
-import com.example.eventmanagement.services.EventService;
-import com.example.eventmanagement.services.RegistrationService;
-import com.example.eventmanagement.services.UserService;
+import com.example.eventmanagement.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,16 +12,15 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private ApiService apiService;
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<User> getUsers() {
+        return apiService.getUsers();
     }
 
     @PostMapping
     public User addUser(@RequestBody User user) {
-        return userService.addUser(user);
+        return apiService.addUser(user);
     }
 }
-

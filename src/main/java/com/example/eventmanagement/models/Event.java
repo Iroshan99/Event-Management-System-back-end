@@ -3,35 +3,30 @@ package com.example.eventmanagement.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
 public class Event {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private String title;
-    @Column
+
+    @Column(length = 500)
     private String description;
-    @Column
+
     private String location;
-    @Column
+
     private int capacity;
-    @Column
-    private String date;
-    @Column
-    private String time;
+
+    private LocalDate date;
+
+    private LocalTime time;
 
     @ManyToOne
+    @JoinColumn(name = "organizer_id")
     private User organizer;
-
-    @OneToMany(mappedBy = "event")
-    private List<Registration> registrations;
-
-    // Getters and Setters
-
 }

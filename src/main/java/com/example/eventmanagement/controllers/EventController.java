@@ -1,7 +1,7 @@
-package com.example.eventmanagement.controllers;
+package com.example.eventmanagement.controller;
 
 import com.example.eventmanagement.models.Event;
-import com.example.eventmanagement.services.EventService;
+import com.example.eventmanagement.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +12,15 @@ import java.util.List;
 public class EventController {
 
     @Autowired
-    private EventService eventService;
+    private ApiService apiService;
 
     @GetMapping
-    public List<Event> getAllEvents() {
-        return eventService.getAllEvents();
+    public List<Event> getEvents() {
+        return apiService.getEvents();
     }
 
     @PostMapping
     public Event addEvent(@RequestBody Event event) {
-        return eventService.addEvent(event);
+        return apiService.addEvent(event);
     }
 }
